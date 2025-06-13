@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Postres destacados</h2>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="col" *ngFor="let postre of postres">
+      <div class="card h-100 shadow-sm">
+        <img
+          [src]="postre.imagen"
+          class="card-img-top"
+          [alt]="postre.nombre"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ postre.nombre }}</h5>
+          <p class="card-text">
+            <strong>Pasos:</strong>
+          </p>
+          <ul
+            class="card-text"
+            style="max-height: 100px; overflow: hidden; text-overflow: ellipsis; padding-left: 1.2rem;"
+          >
+            <li *ngFor="let paso of postre.pasos">{{ paso }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+descripcion {
+  background-color: var(--surface-color);
+  color: var(--default-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-family: var(--default-font);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.titulo {
+  font-family:  Verdana;
+  color: var(--accent-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+
