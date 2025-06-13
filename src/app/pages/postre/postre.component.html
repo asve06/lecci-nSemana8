@@ -1,25 +1,42 @@
-<div class="container mt-4">
-  <h2 class="text-center mb-4">Postres destacados</h2>
+<div class="container py-4">
+  <h2 class="text-center mb-4">Postres</h2>
 
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-    <div class="col" *ngFor="let postre of postres">
-      <div class="card h-100 shadow-sm">
-        <img
-          [src]="postre.imagen"
-          class="card-img-top"
-          [alt]="postre.nombre"
-        />
+  <div *ngFor="let postre of postres; let i = index" class="card mb-4 shadow-sm">
+    <div class="row g-0">
+      <!-- Imagen del postre -->
+      <div class="col-md-4">
+        <img [src]="postre.imagen" [alt]="postre.nombre" class="img-fluid rounded-start w-100 h-100" />
+      </div>
+
+      <!-- Nombre y pasos -->
+      <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{ postre.nombre }}</h5>
-          <p class="card-text">
-            <strong>Pasos:</strong>
-          </p>
-          <ul
-            class="card-text"
-            style="max-height: 100px; overflow: hidden; text-overflow: ellipsis; padding-left: 1.2rem;"
-          >
-            <li *ngFor="let paso of postre.pasos">{{ paso }}</li>
-          </ul>
+
+          <!-- Accordion para los pasos -->
+          <div class="accordion mt-3" [id]="'accordion' + i">
+            <div class="accordion-item">
+              <h2 class="accordion-header" [id]="'heading' + i">
+                <button class="accordion-button collapsed" type="button"
+                        data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#collapse' + i"
+                        aria-expanded="false"
+                        [attr.aria-controls]="'collapse' + i">
+                  Ver pasos
+                </button>
+              </h2>
+              <div [id]="'collapse' + i" class="accordion-collapse collapse"
+                   [attr.aria-labelledby]="'heading' + i"
+                   [attr.data-bs-parent]="'#accordion' + i">
+                <div class="accordion-body">
+                  <ol>
+                    <li *ngFor="let paso of postre.pasos">{{ paso }}</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

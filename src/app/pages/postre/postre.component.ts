@@ -5,6 +5,7 @@ import { PostreService } from '../../services/postre.service';
 @Component({
   selector: 'app-postre',
   imports: [CommonModule],
+  providers: [PostreService],
   templateUrl: './postre.component.html',
   styleUrl: './postre.component.css'
 })
@@ -12,8 +13,8 @@ import { PostreService } from '../../services/postre.service';
 export class PostreComponent {
   postres: Postre[] = [];
   constructor(private postreService: PostreService) {
-    postreService.getPostres().subscribe((data: any) => {
-      this.postres = data.postres;
+    postreService.getPostres().subscribe((data: Postre[]) => {
+      this.postres = data;
     });
   }
 }
